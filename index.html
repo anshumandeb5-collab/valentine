@@ -120,9 +120,14 @@ function openPopup() {
 function yesClicked() {
   document.getElementById("popup").classList.add("hidden");
   document.getElementById("final").classList.remove("hidden");
-  document.getElementById("music").play();
+
+  const music = document.getElementById("music");
+  music.muted = false;
+  music.play();
+
   setInterval(createHeart, 300);
 }
+
 
 function moveNo() {
   const no = document.getElementById("no");
@@ -142,5 +147,6 @@ function createHeart() {
 
 </body>
 </html>
+
 
 
