@@ -98,7 +98,8 @@ button {
 </div>
 
 <div class="container hidden" id="final">
-  <h1>Forever Us 💍</h1>
+  <h1 class="heartbeat">Forever Us 💍</h1>
+<div id="typing"></div>
   <p style="font-size:20px;">
     Every day with you is my favorite day.<br>
     I choose you — today, tomorrow, always. ❤️
@@ -126,6 +127,7 @@ function yesClicked() {
   music.play();
 
   setInterval(createHeart, 300);
+  startTyping();
 }
 
 
@@ -147,6 +149,75 @@ function createHeart() {
 
 </body>
 </html>
+/* ✨ Sparkle background */
+.sparkle {
+  position: fixed;
+  width: 6px;
+  height: 6px;
+  background: rgba(255,255,255,0.8);
+  border-radius: 50%;
+  animation: sparkle 4s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes sparkle {
+  from {
+    transform: translateY(0) scale(0.5);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-120vh) scale(1.5);
+    opacity: 0;
+  }
+}
+
+/* 💓 Heartbeat animation */
+.heartbeat {
+  animation: beat 1.2s infinite;
+}
+
+@keyframes beat {
+  0%, 100% { transform: scale(1); }
+  25% { transform: scale(1.08); }
+  50% { transform: scale(0.95); }
+  75% { transform: scale(1.05); }
+}
+
+/* ⌨️ Typing effect */
+#typing {
+  font-size: 22px;
+  color: #6a0030;
+  margin-top: 15px;
+  min-height: 30px;
+}
+<script>
+/* ✨ Sparkles */
+function createSparkle() {
+  const s = document.createElement("div");
+  s.className = "sparkle";
+  s.style.left = Math.random() * 100 + "vw";
+  s.style.bottom = "-10px";
+  s.style.animationDuration = (3 + Math.random() * 3) + "s";
+  document.body.appendChild(s);
+  setTimeout(() => s.remove(), 5000);
+}
+setInterval(createSparkle, 400);
+
+/* ⌨️ Typing love message */
+const message = "I love you more than words can say ❤️";
+let index = 0;
+
+function startTyping() {
+  const typing = document.getElementById("typing");
+  if (index < message.length) {
+    typing.innerHTML += message.charAt(index);
+    index++;
+    setTimeout(startTyping, 80);
+  }
+}
+</script>
+
+
 
 
 
